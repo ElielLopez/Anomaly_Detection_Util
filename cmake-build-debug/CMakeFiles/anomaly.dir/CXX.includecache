@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eliel/CLionProjects/anomaly/anomaly_detection_util.cpp
+math.h
+-
+anomaly_detection_util.h
+/home/eliel/CLionProjects/anomaly/anomaly_detection_util.h
+
+/home/eliel/CLionProjects/anomaly/anomaly_detection_util.h
+
+/home/eliel/CLionProjects/anomaly/main.cpp
+iostream
+-
+anomaly_detection_util.h
+/home/eliel/CLionProjects/anomaly/anomaly_detection_util.h
+anomaly_detection_util.cpp
+/home/eliel/CLionProjects/anomaly/anomaly_detection_util.cpp
+

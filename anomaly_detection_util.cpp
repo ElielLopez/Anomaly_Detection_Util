@@ -20,6 +20,7 @@ float avg(float* x, int size){
 
     average = sum / size;
     cout<<sum<<endl;
+    cout<<"check"<<endl;
 
     return average;
 }

@@ -47,7 +47,6 @@ int main(){
 //        delete ps[i];
 
     cout<<"done"<<endl;
-    cout<<"check"<<endl;
     return 0;
 }
 

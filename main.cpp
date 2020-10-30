@@ -38,6 +38,9 @@ int main(){
     float v[]={var(x,N),cov(x,y,N),pearson(x,y,N),l.a,l.b,l.f(4),dev(p,l)};
     float e[]={8.25,16.63,0.999,2.015,0.113,8.176,0.176};
 
+//    for(int k = 0; k < 7; k ++) {
+//        cout<<v[k]<<endl;
+//    }
 
     for(int i=0;i<7;i++)
         if(wrong(v[i],e[i]))

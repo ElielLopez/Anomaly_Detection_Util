@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// Average function will return the average of the x elements.
 float avg(float* x, int size){
 
     float average;
@@ -19,13 +20,13 @@ float avg(float* x, int size){
     }
 
     average = sum / size;
-//    cout<<sum<<endl;
-//    cout<<"check"<<endl;
 
     return average;
 }
 
-// returns the variance of X and Y
+// returns the variance of X and Y according to the formula:
+// I will calculate the avg of X and then create a variable that contain its power in base 2.
+// also i need to calculate the average of X but every element will be in power of 2.
 float var(float* x, int size){
 
     float variance = 0;
@@ -46,7 +47,10 @@ float var(float* x, int size){
     return variance;
 }
 
-// returns the covariance of X and Y
+// returns the covariance of X and Y.
+// for X and Y, i will calculate their average and save a variable with their multiplication.
+// in addition i will calculate the multiplication of every element in X with his equivalent in Y and sum them up.
+// this sum will be divided by the size and will be the average of XY.
 float cov(float* x, float* y, int size){
 
     float covariance = 0;
@@ -68,18 +72,21 @@ float cov(float* x, float* y, int size){
 }
 
 
-// returns the Pearson correlation coefficient of X and Y
+// returns the Pearson correlation coefficient of X and Y.
+// calculates the covariance of X and Y and then the deviation of X and deviation of Y by applying square root on var.
 float pearson(float* x, float* y, int size){
 
     float pearsonCoefficient = 0;
     float covariance = 0;
     float devX = 0;
     float devY = 0;
+    float devXY = 0;
 
     covariance = cov(x, y, size);
-    devX = sqrt(var(x, size));
-    devY = sqrt(var(y, size));
-    pearsonCoefficient = covariance / devX * devY;
+    devX = sqrtf(var(x, size));
+    devY = sqrtf(var(y, size));
+    devXY = devX * devY;
+    pearsonCoefficient = covariance / devXY;
 
     return pearsonCoefficient;
 }
@@ -87,6 +94,8 @@ float pearson(float* x, float* y, int size){
 // performs a linear regression and returns the line equation
 // a = COV(x,y) / VAR(x)
 // b = avgY - a * avgX
+// i will save the X and Y into local variables, saving the covariance of X and Y and variance of X,
+//calculating a and then b wit average of Y and X.
 Line linear_reg(Point** points, int size){
 
     float a = 0, b = 0;
@@ -106,6 +115,7 @@ Line linear_reg(Point** points, int size){
         avgY += points[i]->y;
         avgX += points[i]->x;
     }
+
     avgY = avgY / size;
     avgX = avgX / size;
 
@@ -120,9 +130,7 @@ Line linear_reg(Point** points, int size){
 
 // returns the deviation between point p and the line equation of the points
 float dev(Point p,Point** points, int size){
-    // p = (4, 10)
-    // 10 = a * 4 + b
-    // line = y = a * x + b
+
     float deviation = 0;
 
     deviation = dev(p, linear_reg(points, size));
@@ -131,10 +139,8 @@ float dev(Point p,Point** points, int size){
 }
 
 // returns the deviation between point p and the line
-// line y = a*x+b
-// 9 = a * 4 + b
 float dev(Point p,Line l){
-    // (p.x, p.y)=(4, 10)     (4, 9)
+
     float deviation = 0;
     float px = 0;
     float py = 0;
